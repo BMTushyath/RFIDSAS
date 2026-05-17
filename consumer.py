@@ -27,7 +27,7 @@ def main():
     # Continuously listen for RFID UID messages
     for message in consumer:
         rfid_id = message.value.strip()
-        print(f"\nRFID Received: {rfid_id}")
+        print(f"\nRFID Number Received: {rfid_id}")
         
         # Search the UID in the Postgres users table
         user_info = get_user_info(rfid_id)
