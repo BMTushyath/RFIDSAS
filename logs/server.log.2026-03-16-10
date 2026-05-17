@@ -1,0 +1,9 @@
+[2026-03-16 10:58:41,210] INFO Registered `kafka:type=kafka.Log4jController` MBean (kafka.utils.Log4jControllerRegistration$)
+[2026-03-16 10:58:41,534] ERROR Exiting Kafka due to fatal exception (kafka.Kafka$)
+java.lang.RuntimeException: No readable meta.properties files found.
+	at org.apache.kafka.metadata.properties.MetaPropertiesEnsemble.verify(MetaPropertiesEnsemble.java:480)
+	at kafka.server.KafkaRaftServer$.initializeLogDirs(KafkaRaftServer.scala:140)
+	at kafka.server.KafkaRaftServer.<init>(KafkaRaftServer.scala:55)
+	at kafka.Kafka$.buildServer(Kafka.scala:68)
+	at kafka.Kafka$.main(Kafka.scala:75)
+	at kafka.Kafka.main(Kafka.scala)

@@ -1,0 +1,6 @@
+[2026-05-04 02:26:15,295] INFO Starting the log cleaner (org.apache.kafka.storage.internals.log.LogCleaner)
+[2026-05-04 02:26:15,331] INFO [kafka-log-cleaner-thread-0]: Starting (org.apache.kafka.storage.internals.log.LogCleaner$CleanerThread)
+[2026-05-04 02:28:36,304] INFO Shutting down the log cleaner. (org.apache.kafka.storage.internals.log.LogCleaner)
+[2026-05-04 02:28:36,305] INFO [kafka-log-cleaner-thread-0]: Shutting down (org.apache.kafka.storage.internals.log.LogCleaner$CleanerThread)
+[2026-05-04 02:28:36,305] INFO [kafka-log-cleaner-thread-0]: Shutdown completed (org.apache.kafka.storage.internals.log.LogCleaner$CleanerThread)
+[2026-05-04 02:28:36,305] INFO [kafka-log-cleaner-thread-0]: Stopped (org.apache.kafka.storage.internals.log.LogCleaner$CleanerThread)
