@@ -47,7 +47,7 @@ def main():
             else:
                 new_state = "OUTSIDE"
                 status = "EXIT"
-                telegram_action = "LEFT"
+                telegram_action = "EXITED"
                 
             # Update user state
             update_user_state(rfid_id, new_state)
