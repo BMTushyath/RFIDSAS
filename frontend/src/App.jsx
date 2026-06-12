@@ -5,12 +5,14 @@ import './index.css';
 
 function App() {
   const [registrationData, setRegistrationData] = useState(null);
+  const [telegramConnected, setTelegramConnected] = useState(false);
 
   const handleSuccess = (data) => {
     setRegistrationData(data);
   };
 
   const isSuccess = !!registrationData;
+  const currentStep = !registrationData ? 1 : (!telegramConnected ? 2 : 3);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-violet-50 bg-grid flex items-center justify-center p-4">
@@ -37,7 +39,9 @@ function App() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-slate-800 leading-tight">
-                  {isSuccess ? "You're all set!" : 'Student Registration'}
+                  {currentStep === 1 && 'Student Registration'}
+                  {currentStep === 2 && 'Connect Telegram'}
+                  {currentStep === 3 && "You're all set!"}
                 </h1>
                 <p className="text-xs text-slate-400 font-medium mt-0.5">
                   RFID Smart Attendance System
@@ -47,19 +51,26 @@ function App() {
 
             {/* Progress indicator */}
             <div className="flex items-center gap-2 mt-4">
-              <div className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${isSuccess ? 'bg-emerald-400' : 'bg-indigo-500'}`} />
-              <div className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${isSuccess ? 'bg-emerald-400' : 'bg-slate-200'}`} />
+              <div className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${currentStep >= 1 ? (currentStep > 1 ? 'bg-emerald-400' : 'bg-indigo-500') : 'bg-slate-200'}`} />
+              <div className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${currentStep >= 2 ? (currentStep > 2 ? 'bg-emerald-400' : 'bg-indigo-500') : 'bg-slate-200'}`} />
+              <div className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${currentStep >= 3 ? 'bg-emerald-400' : 'bg-slate-200'}`} />
             </div>
-            <div className="flex justify-between mt-1">
-              <span className="text-[10px] font-medium text-indigo-500">Register</span>
-              <span className={`text-[10px] font-medium ${isSuccess ? 'text-emerald-500' : 'text-slate-300'}`}>Connect Telegram</span>
+            <div className="flex justify-between mt-1 gap-1">
+              <span className={`text-[9px] sm:text-[10px] font-medium ${currentStep === 1 ? 'text-indigo-500 font-semibold' : (currentStep > 1 ? 'text-emerald-500' : 'text-slate-300')}`}>Step 1: Details</span>
+              <span className={`text-[9px] sm:text-[10px] font-medium ${currentStep === 2 ? 'text-indigo-500 font-semibold' : (currentStep > 2 ? 'text-emerald-500' : 'text-slate-300')}`}>Step 2: Link Telegram</span>
+              <span className={`text-[9px] sm:text-[10px] font-medium ${currentStep === 3 ? 'text-emerald-500 font-semibold' : 'text-slate-300'}`}>Step 3: Complete</span>
             </div>
           </div>
 
           {/* Card Body */}
           <div className="px-8 py-7">
             {isSuccess ? (
-              <SuccessScreen telegramLink={registrationData.telegram_link} />
+              <SuccessScreen 
+                telegramLink={registrationData.telegram_link} 
+                rfidId={registrationData.rfid_id || registrationData.rfid}
+                onConnected={() => setTelegramConnected(true)}
+                connected={telegramConnected}
+              />
             ) : (
               <RegisterForm onSuccess={handleSuccess} />
             )}
@@ -74,10 +85,7 @@ function App() {
           </div>
         </div>
 
-        {/* Decorative badge */}
-        <div className="absolute -top-3 -right-3 bg-gradient-to-r from-indigo-500 to-violet-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg shadow-indigo-200 uppercase tracking-widest">
-          Demo
-        </div>
+        {/* Decorative badge removed */}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import uuid
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from database.db import register_new_user
+from database.db import register_new_user, get_user_info
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -42,6 +42,25 @@ async def register(request: RegisterRequest):
     except Exception as e:
         print(f"Registration error: {e}")
         raise HTTPException(status_code=500, detail="Registration failed")
+
+@app.get("/status/{rfid_id}")
+async def check_status(rfid_id: str):
+    try:
+        user_info = get_user_info(rfid_id)
+        if not user_info:
+            raise HTTPException(status_code=404, detail="User not found")
+        name, chat_id, state = user_info
+        return {
+            "name": name,
+            "connected": chat_id is not None,
+            "chat_id": chat_id
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"Status check error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to check status")
+
 
 if __name__ == "__main__":
     import uvicorn

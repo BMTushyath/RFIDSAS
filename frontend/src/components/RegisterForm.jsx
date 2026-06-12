@@ -41,7 +41,7 @@ const RegisterForm = ({ onSuccess }) => {
       }
 
       const data = await response.json();
-      onSuccess(data);
+      onSuccess({ ...data, rfid_id: formData.rfid_id });
     } catch (err) {
       setError(err.message || 'Registration failed. Please try again.');
     } finally {
