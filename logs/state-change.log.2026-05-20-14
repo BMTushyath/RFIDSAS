@@ -1,0 +1,8 @@
+[2026-05-20 14:57:47,032] INFO [Broker id=1] Transitioning 1 partition(s) to local followers. (state.change.logger)
+[2026-05-20 14:57:47,037] INFO [Broker id=1] Creating new partition rfid-events-0 with topic id O4PMSoimQdGoaB2StIrNRA. (state.change.logger)
+[2026-05-20 14:57:47,052] INFO [Broker id=1] Follower rfid-events-0 starts at leader epoch 49 from offset 40 with partition epoch 57 and high watermark 40. Current leader is -1. Previous leader None and previous leader epoch was -1. (state.change.logger)
+[2026-05-20 14:57:47,054] INFO [Broker id=1] Stopped fetchers as part of become-follower for 1 partitions (state.change.logger)
+[2026-05-20 14:57:47,056] INFO [Broker id=1] Started fetchers as part of become-follower for 1 partitions (state.change.logger)
+[2026-05-20 14:57:47,115] INFO [Broker id=1] Transitioning 1 partition(s) to local leaders. (state.change.logger)
+[2026-05-20 14:57:47,117] INFO [Broker id=1] The topic partition rfid-events-0 was marked as RECOVERING. Marking the topic partition as RECOVERED. (state.change.logger)
+[2026-05-20 14:57:47,123] INFO [Broker id=1] Leader rfid-events-0 with topic id Some(O4PMSoimQdGoaB2StIrNRA) starts at leader epoch 50 from offset 40 with partition epoch 58, high watermark 40, ISR [1], adding replicas [] and removing replicas [] . Previous leader Some(-1) and previous leader epoch was 49. (state.change.logger)

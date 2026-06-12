@@ -1,0 +1,3 @@
+[2026-05-20 15:04:41,959] INFO [Broker id=1] Transitioning 1 partition(s) to local followers. (state.change.logger)
+[2026-05-20 15:04:41,964] INFO [Broker id=1] Follower rfid-events-0 starts at leader epoch 51 from offset 42 with partition epoch 59 and high watermark 42. Current leader is -1. Previous leader Some(1) and previous leader epoch was 50. (state.change.logger)
+[2026-05-20 15:04:41,977] INFO [Broker id=1] Stopped fetchers as part of controlled shutdown for 1 partitions (state.change.logger)
